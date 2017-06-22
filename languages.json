@@ -1,0 +1,50 @@
+{
+  "danish" : {
+  	"language" : "Danish",
+  	"filename" : "./dictionaries/dansk.txt"
+  },
+  "deutsch" : {
+    "language" : "Deutsch",
+    "filename" : "./dictionaries/deutsch.txt"
+  },
+  "english_uk" : {
+    "language" : "English (UK)",
+    "filename" : "./dictionaries/ukenglish.txt"
+  },
+  "english_2" : {
+  	"language" : "English 2",
+    "filename" : "./dictionaries/english2.txt"
+  },
+  "english_3" : {
+  	"language" : "English 3",
+    "filename" : "./dictionaries/english3.txt"
+  },
+  "spanish" : {
+  	"language" : "Spanish",
+    "filename" : "./dictionaries/espanol.txt"
+  },
+  "francais" : {
+  	"language" : "Francais",
+    "filename" : "./dictionaries/francais.txt"
+  },
+  "nederlands" : {
+  	"language" : "Nederlands",
+    "filename" : "./dictionaries/nederlands.txt"
+  },
+  "norsk" : {
+  	"language" : "Norsk",
+    "filename" : "./dictionaries/norsk.txt"
+  },
+  "swiss" : {
+  	"language" : "Swiss",
+    "filename" : "./dictionaries/swiss.txt"
+  },
+  "english_usa" : {
+  	"language" : "English (US)",
+    "filename" : "./dictionaries/usa.txt"
+  },
+  "english_usa_2" : {
+  	"language" : "English (US 2)",
+    "filename" : "./dictionaries/usa2.txt"
+  }  
+}

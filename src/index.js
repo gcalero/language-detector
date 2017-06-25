@@ -1,6 +1,7 @@
 var path = require('path')
 var functions = require('./functions.js')
 
+const LANGUAGES_FILE = 'languages.json'
 var info = {
   filename: process.argv[2],
   falsePositiveP: process.argv[3]
@@ -17,24 +18,30 @@ if (info.falsePositiveP <= 0.000 || info.falsePositiveP >= 1) {
 }
 
 // 1. load the file
-var langsFile = path.join(__dirname, info.filename);
+var langsFile = path.join(__dirname, LANGUAGES_FILE);
 
   functions.loadLanguages(langsFile, function (err, json) {
   	if (err) { console.error(err); process.exit(2); }
 
-	var bloomfilters = new Array();
+	var bloomfilters = {};
 
 	var langs = Object.keys(json.languages);
     for (var i=0; i < langs.length; i++) { 
 		var langObj = json.languages[langs[i]];
-		functions.buildBloomFilterForLanguage(langs[i], langObj.filename, bloomfilters, info.falsePositiveP);
+		bloomfilters[langs[i]] = functions.buildBloomFilterForLanguage(langObj.filename, info.falsePositiveP);
 	}
+	console.log("BFs: " + Object.keys(bloomfilters));
+
+	functions.testText(info.filename, bloomfilters, function(err, res) {
+      if (err) { console.error(err); return; }
+	  console.log("callback matches: " + res.matches + " totalWords " + res.totalWords);
+      for (var i=0; i < res.matches.length; i++) {
+        console.log(res.matches[i].language + ": " + (res.matches[i].hits * 100 / res.totalWords).toFixed(2) + "%");
+      }
+	});
+
   });
 
-
-  
-  // hacer una UI con un input y un botón
-  
   // que al presionar el botón separe las palabras y cuente 
   // count[lang] += BF[lang].test(word)? 1 : 0
   

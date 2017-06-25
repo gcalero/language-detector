@@ -61,21 +61,22 @@ var BloomFilter = (function (Object, Array, Date, module) {
   {
     p = p || DEFAULT_FALSE_POSITIVE_RATE;
     var m = optimalM(n, p);	
-  	console.log('BloomFilter constructor (n:'+ n + ', p:' + p + ', m:'+m+')');
-  	
+  	var k =  optimalK(m,n);
   	var bloomFilter = new Object()
   	bloomFilter.constructor = BloomFilter // Replace contructor
   	bloomFilter.bitset = new BitArray();
     bloomFilter.bitset.length = m;
-	bloomFilter.k = optimalK(m,n);
 	bloomFilter.m = m;
-	
+	bloomFilter.k =	k;
   	bloomFilter.add = addElement;
   	bloomFilter.test = testElement;
 	bloomFilter.hash_f1 = sha.sha256;
 	bloomFilter.hash_f2 = sha1;
 
   	bloomFilter.getPositionsForElement= getPositionsForElement;
+	
+	console.log('BloomFilter constructor (n:'+ n + ', p:' + p + ', m:' + m + ', k: ' + k + ')');
+
   	return bloomFilter;
   }
   

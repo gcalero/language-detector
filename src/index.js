@@ -28,13 +28,13 @@ var langsFile = path.join(__dirname, LANGUAGES_FILE);
 	var langs = Object.keys(json.languages);
     for (var i=0; i < langs.length; i++) { 
 		var langObj = json.languages[langs[i]];
-		bloomfilters[langs[i]] = functions.buildBloomFilterForLanguage(langObj.filename, info.falsePositiveP);
+		var bf = functions.buildBloomFilterForLanguage(langObj.filename, info.falsePositiveP);
+		bloomfilters[langs[i]] = bf
+		console.log(langs[i]+ ': BloomFilter (n:'+ bf.n + ', p:' + info.falsePositiveP + ', m:' +  bf.m + ', k: ' +  bf.k + ')');
 	}
-	console.log("BFs: " + Object.keys(bloomfilters));
 
 	functions.testText(info.filename, bloomfilters, function(err, res) {
       if (err) { console.error(err); return; }
-	  console.log("callback matches: " + res.matches + " totalWords " + res.totalWords);
       for (var i=0; i < res.matches.length; i++) {
         console.log(res.matches[i].language + ": " + (res.matches[i].hits * 100 / res.totalWords).toFixed(2) + "%");
       }

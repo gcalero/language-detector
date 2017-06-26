@@ -75,7 +75,7 @@ var BloomFilter = (function (Object, Array, Date, module) {
 
   	bloomFilter.getPositionsForElement= getPositionsForElement;
 	
-	console.log('BloomFilter constructor (n:'+ n + ', p:' + p + ', m:' + m + ', k: ' + k + ')');
+//	console.log('BloomFilter (n:'+ n + ', p:' + p + ', m:' + m + ', k: ' + k + ')');
 
   	return bloomFilter;
   }

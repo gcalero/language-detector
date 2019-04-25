@@ -18,7 +18,7 @@ $ node src/index.js texts/spanish.txt 0.0000001
 ```
 ## Improvements
 
-As I've commented out below above the purpose of this project is not language detection itself but bloom filter demostration. However anyone reading this lines is invited to improve and extend the project. Here are some thoughts:
+As I've commented out below above the purpose of this project is not language detection itself but bloom filter demonstration. However anyone reading this lines is invited to improve and extend the project. Here are some thoughts:
 
 * Better tokenization
 * Consolidate multiple dictionaries for the same language
